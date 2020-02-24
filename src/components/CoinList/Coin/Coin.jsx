@@ -1,12 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Coin = ({ name, value, cap }) => (
+const Coin = ({ name, price, cap, symbolPath }) => (
   <div>
     Bitcoin
     <ul className="crypto">
+      <li className="crypto__acronym">{symbolPath}</li>
       <li className="crypto__acronym">Acronym: {name}</li>
-      <li className="crypto__value">Current value: {value} $</li>
+      <li className="crypto__value">Current value: {price} $</li>
       <li className="crypto__cap">Market cap: {cap}</li>
     </ul>
   </div>
@@ -14,7 +15,8 @@ const Coin = ({ name, value, cap }) => (
 
 Coin.propTypes = {
   name: PropTypes.string.isRequired,
-  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  symbolPath:PropTypes.any.isRequired,
+  price: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   cap: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 };
 export default Coin;
