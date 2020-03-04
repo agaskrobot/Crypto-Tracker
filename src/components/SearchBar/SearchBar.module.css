@@ -1,0 +1,27 @@
+.search-bar {
+  composes: base-margin-right from "../../shared/styles.modules.css";
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 800px) {
+  .search-bar {
+    margin-right: 5%;
+  }
+}
+
+.search-bar__input {
+  transition: all 0.3s ease-in-out;
+  outline: none;
+  padding: 0.5em 0.6em;
+  margin: 5px 1px 3px 0;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+}
+
+.search-bar__input:focus {
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  margin: 5px 1px 3px 0px;
+  border: 1px solid rgba(81, 203, 238, 1);
+}

@@ -1,0 +1,14 @@
+.row {
+  composes: base-margin-left from '../../../shared/styles.modules.css';
+  composes: base-margin-right from '../../../shared/styles.modules.css';
+  display: flex;
+  flex-direction: row;
+}
+
+@media (max-width: 800px) {
+  .row {
+    margin-left: 5%;
+    margin-right: 5%;
+    font-size: 0.8em;
+  }
+}

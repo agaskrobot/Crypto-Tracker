@@ -1,0 +1,17 @@
+/* BASE MARGINS */
+.base-margin-right {
+  margin-right: 15%;
+}
+
+.base-margin-left {
+  margin-left: 15%;
+}
+
+/* SMALL MARGINS */
+.small-margin-right {
+  margin-right: 5%;
+}
+
+.small-margin-left {
+  margin-left: 5%;
+}

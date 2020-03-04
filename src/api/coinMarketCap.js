@@ -1,6 +1,8 @@
 import { useState, useEffect, useReducer } from "react";
 import CoinMarketCap from "coinmarketcap-api";
 
+import {mapFetchedCryptos} from "../lib/helpers"
+
 const coinsActionTypes = {
   updateCoins: "UPDATE_COINS",
   resetCoins: "RESET_COINS"
@@ -21,31 +23,15 @@ const coinReducer = (state = initialState, { type, payload }) => {
   }
 };
 
-export function mapFetchedCryptos(fetchedCryptos) {
-  return Object.keys(fetchedCryptos).map(cryptoId => {
-    const crypto = fetchedCryptos[cryptoId];
-
-    const { name, symbol: acronym, id, circulating_supply: supply } = crypto;
-    const symbolPath = getIconPath(id);
-    const quotesInUsd = crypto.quote.USD;
-    const { price, market_cap: cap} = quotesInUsd;
-
-    return { name, acronym, supply, symbolPath, price, cap };
-  });
-}
-function getIconPath(id) {
-  return "https://s2.coinmarketcap.com/static/img/coins/32x32/1.png";
-}
-
 const API_KEY= process.env.REACT_APP_API_KEY
 
+// Custom hook for geting coins
 export function useCoinList() {
   const [{ coins }, dispatch] = useReducer(coinReducer, initialState);
   const [loading, setLoading] = useState(false);
 
   const client = new CoinMarketCap(API_KEY);
 
-  // TODO: The coins are loaded when there are no coins.
   useEffect(() => {
     if (loading) {
       return;
